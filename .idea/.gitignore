@@ -2,7 +2,7 @@
 /shelf/
 /workspace.xml
 # Datasource local storage ignored files
-/../../../../../../:\xampp\htdocs\projects\complaint-system\.idea/dataSources/
+/../../../../../../:\xampp\htdocs\projects\php-complain-system\.idea/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/

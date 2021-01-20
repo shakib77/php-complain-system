@@ -21,10 +21,10 @@ if (isset($_POST['submit'])) {
     $photo_end = strtolower($photo_ext);
     if ($photo_end == 'png' or $photo_end == 'jpg') {
         $photo_name = $name . '_' . time() . '.' . $photo_end;
-    }/*else{
+    }else{
         $photo_type_error = "Please upload your photo [.png or .jpg]";
 
-    }*/
+    }
 
     $input_error = array();
 
@@ -97,6 +97,7 @@ if (isset($_POST['submit'])) {
                 <option value="hr">HR</option>
                 <option value="logistics">Logistics</option>
                 <option value="it">IT</option>
+                <option value="food">Food</option>
             </select>
             <div class="error" style="color: red" id="typeErr"></div>
 
@@ -171,16 +172,15 @@ if (isset($_POST['submit'])) {
         var fileUploadPath = fileData.value;
         if (fileUploadPath == '') {
             document.getElementById("photoErr").innerHTML = "Please upload a photo";
-            isValid = false;
+            valid = false;
         } else {
             var extension = fileUploadPath.substring(
                 fileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-            var fileError = 0;
             if (extension == "png" || extension == "jpg") {
                 document.getElementById("photoErr").innerHTML = "";
             } else {
                 document.getElementById("photoErr").innerHTML = "Only png and jpg formats will support";
-                isValid = false;
+                valid = false;
             }
         }
         return valid;

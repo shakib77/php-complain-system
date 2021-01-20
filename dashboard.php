@@ -7,15 +7,17 @@
     $result = mysqli_query($conn, $all_c);
     $total = mysqli_num_rows($result);
 
-    $hr = mysqli_query($conn,"SELECT * FROM `complain` WHERE type='hr'");
-    $hr = mysqli_num_rows($hr);
+//    $type = mysqli_query($conn, "select type, count(id) as type_total from complain group by type");
 
-    $logistics = mysqli_query($conn, "SELECT * FROM `complain` WHERE type='logistics'");
-    $logistics = mysqli_num_rows($logistics);
+//    $hr = mysqli_query($conn,"SELECT * FROM `complain` WHERE type='hr'");
+//    $hr = mysqli_num_rows($hr);
 
-
-    $it = mysqli_query($conn, "SELECT * FROM `complain` WHERE type='it'");
-    $it = mysqli_num_rows($it);
+//    $logistics = mysqli_query($conn, "SELECT * FROM `complain` WHERE type='logistics'");
+//    $logistics = mysqli_num_rows($logistics);
+//
+//
+//    $it = mysqli_query($conn, "SELECT * FROM `complain` WHERE type='it'");
+//    $it = mysqli_num_rows($it);
 ?>
 
 <!doctype html>
@@ -39,23 +41,35 @@
                     <h3 class="hr">Total</h3>
                     <h4 class="hr"><?=$total?></h4>
                 </div>
-                <a href="hr.php">
-                <div class="box-hr">
-                    <h3 class="hr">HR</h3>
-                    <h4 class="hr"><?=$hr?></h4>
-                </div>
-                </a>
-                <a href="logistics.php">
-                <div class="box-log">
-                    <h3 class="hr">Logistics</h3>
-                    <h4 class="hr"><?=$logistics?></h4>
-                </div>
-                </a>
-                <a href="itt.php">
-                <div class="box-it">
-                    <h3 class="hr">IT</h3>
-                    <h4 class="hr"><?=$it?></h4>
-                </div>
+                <?php
+                $type = mysqli_query($conn, "select type, count(id) as type_total from complain group by type");
+                while ($row = mysqli_fetch_assoc($type)) {
+                    /*echo '<pre>';
+                    print_r($row);*/
+                    ?>
+                    <div class="box-hr">
+                        <a href="hr.php?type=<?php echo $row['type']?>"><h3 class="hr"><?php echo $row['type']?></h3></a>
+                        <h4 class="hr"><?php echo $row['type_total']?></h4>
+                    </div>
+
+               <?php } ?>
+<!--                <a href="hr.php">-->
+<!--                <div class="box-hr">-->
+<!--                    <h3 class="hr">HR</h3>-->
+<!--                    <h4 class="hr">--><?//=$hr?><!--</h4>-->
+<!--                </div>-->
+<!--                </a>-->
+<!--                <a href="logistics.php">-->
+<!--                <div class="box-log">-->
+<!--                    <h3 class="hr">Logistics</h3>-->
+<!--                    <h4 class="hr">--><?//=$logistics?><!--</h4>-->
+<!--                </div>-->
+<!--                </a>-->
+<!--                <a href="itt.php">-->
+<!--                <div class="box-it">-->
+<!--                    <h3 class="hr">IT</h3>-->
+<!--                    <h4 class="hr">--><?//=$it?><!--</h4>-->
+<!--                </div>-->
                 </a>
             </div>
         </div>

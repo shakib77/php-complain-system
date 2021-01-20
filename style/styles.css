@@ -144,8 +144,20 @@ input[type=submit]:hover {
     justify-content: space-around;
 }
 
-table, th, td {
-    border: 1px solid olivedrab;
+/*table css*/
+
+table {
+    border: thin solid olivedrab;
+    background-color: #009879;
+}
+td{
+    background-color: #009879;
+    color: #FFFFFF;
+    text-align: left;
+    /*border: thin solid olivedrab;*/
+}
+tr {
+    border: thin solid olivedrab;
 }
 .header {
     display: flex;
@@ -177,4 +189,25 @@ input:focus:invalid {
 
 .error.active {
     padding: 0.3em;
+}
+
+/*pagination*/
+.pageNav {
+    margin: 16px 0;
+}
+.pageNav span {
+    display: inline-block;
+    padding: 4px 8px;
+    margin: 1px;
+    cursor: pointer;
+    font-size: 14px;
+    background-color: #FFFFFF;
+    border: 1px solid #e1e1e1;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.pageNav span:hover,
+.pageNav .pg-selected {
+    background-color: #f9f9f9;
+    border: 1px solid #CCCCCC;
 }

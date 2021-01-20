@@ -21,10 +21,10 @@ if(isset($_GET['single-complain-id'])){
 <div class="main_dashboard">
     <?php include_once "header.php";?>
     <div>
-        <h2>Total Complain List</h2>
+        <h2>Complain Details</h2>
     </div>
     <div>
-        <table>
+        <table class="styled-table">
             <tr>
                 <th>Name</th>
                 <th><?= $row['name'] ?></th>

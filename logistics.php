@@ -11,7 +11,7 @@
 <div class="main_dashboard">
     <div>
         <h2>Total Complain List for Logistics</h2>
-        <table>
+        <table id="pager">
             <tr>
                 <th>SL</th>
                 <th>Name</th>
@@ -47,6 +47,16 @@
             <?php } ?>
         </table>
     </div>
+    <br>
+    <div id="pageNav" class="pageNav"></div>
+    <script src="pageing.js"></script>
+    <script>
+        let pager = new Pager('pager', 3);
+
+        pager.init();
+        pager.showPageNav('pager', 'pageNav')
+        pager.showPage(1);
+    </script>
 </div>
 </body>
 </html>

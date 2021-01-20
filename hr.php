@@ -10,8 +10,14 @@
 <body>
 <div class="main_dashboard">
     <div>
-        <h2>Total Complain List for HR </h2>
-        <table>
+        <h2>Customer Complains
+<!--            --><?php
+//            $type = mysqli_query($conn, "select type, count(id) as type_total from complain group by type");
+//            while ($row = mysqli_fetch_assoc($type))
+//            echo $row['type']
+//            ?>
+        </h2>
+        <table id="pager" class="complain-table">
             <tr>
                 <th>SL</th>
                 <th>Name</th>
@@ -23,7 +29,18 @@
                 <th class="action_area">Action</th>
             </tr>
             <?php
-            $complain_all = "SELECT * FROM `complain` WHERE `type`='hr'";
+
+
+            if(isset($_GET['type'])){
+                echo '<pre>';
+                $type = $_GET['type'];
+
+            }
+
+
+
+
+            $complain_all = "SELECT * FROM `complain` WHERE `type`='$type'";
             $result = mysqli_query($conn, $complain_all);
             $sl = 0;
 
@@ -36,15 +53,9 @@
                     <td><?= $rows['complain'] ?></td>
                     <td>
                         <?php
-                        if($rows['type']=='hr'){
-                            echo 'HR';
+                        if($rows['type']=='$type'){
+                            echo $rows['type']=='$type';
                         }
-//                        if($rows['type']=='it'){
-//                            echo 'IT';
-//                        }
-//                        if($rows['type']=='logistics'){
-//                            echo 'Logistics';
-//                        }
                         ?>
                     </td>
                     <td><img src="img/<?= $rows['photo'] ?>" width="50px" height="50px"> </td>
@@ -53,6 +64,16 @@
             <?php } ?>
         </table>
     </div>
+    <br>
+    <div id="pageNav" class="pageNav"></div>
+    <script src="pageing.js"></script>
+    <script>
+        let pager = new Pager('pager', 3);
+
+        pager.init();
+        pager.showPageNav('pager', 'pageNav')
+        pager.showPage(1);
+    </script>
 </div>
 </body>
 </html>
